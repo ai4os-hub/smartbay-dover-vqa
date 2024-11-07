@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartbay-dover-vqa"
+authors = [
+    { name = "Damian Smyth", email = "datarequests@marine.ie" },
+]
+description = "Implementation of DOVER VQA from ICCV 2023, Official Code for paper "Exploring Video Quality Assessment on User Generated Contents from Aesthetic and Technical Perspectives" (Wu, Haoning and Zhang, Erli and Liao, Liang and Chen, Chaofeng and Hou, Jingwen Hou and Wang, Annan and Sun, Wenxiu Sun and Yan, Qiong and Lin, Weisi)"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "No license file" }
+classifiers = [
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: AI/ML/DL Researchers",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+]
+dynamic = ["version", "dependencies"]
+
+[project.urls]
+"Homepage" = "https://github.com/ai4os-hub/smartbay-dover-vqa"
+"Bug Tracker" = "https://github.com/ai4os-hub/smartbay-dover-vqa/issues"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+env = [
+    "SMARTBAY_DOVER_VQA_DATA_PATH=tests/data",
+    "SMARTBAY_DOVER_VQA_MODELS_PATH=tests/models",
+]
+# Allow test files to share names
+# https://docs.pytest.org/en/7.1.x/explanation/goodpractices.html
+addopts = "--import-mode=importlib"
+
+[tool.setuptools]
+packages = [ "smartbay_dover_vqa" ]
+
+[tool.setuptools.package-dir]
+"smartbay_dover_vqa" = "smartbay_dover_vqa"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+version = { file = "VERSION" }
+
+[project.entry-points."deepaas.v2.model"]
+smartbay_dover_vqa = "smartbay_dover_vqa.api"

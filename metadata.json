@@ -1,0 +1,38 @@
+{
+    "title": "smartbay-dover-vqa",
+    "summary": "Implementation of DOVER VQA from ICCV 2023, Official Code for paper "Exploring Video Quality Assessment on User Generated Contents from Aesthetic and Technical Perspectives" (Wu, Haoning and Zhang, Erli and Liao, Liang and Chen, Chaofeng and Hou, Jingwen Hou and Wang, Annan and Sun, Wenxiu Sun and Yan, Qiong and Lin, Weisi)",
+    "description": [
+        "smartbay_dover_vqa is an application using the DEEPaaS API.\n",
+        "Implementation of DOVER VQA from ICCV 2023, Official Code for paper "Exploring Video Quality Assessment on User Generated Contents from Aesthetic and Technical Perspectives" (Wu, Haoning and Zhang, Erli and Liao, Liang and Chen, Chaofeng and Hou, Jingwen Hou and Wang, Annan and Sun, Wenxiu Sun and Yan, Qiong and Lin, Weisi)"
+    ],
+    "keywords": [
+        "docker",
+        "api-v2"
+    ],
+    "license": "No license file",
+    "date_creation": "2024-10-25",
+    "dataset_url": "http://add-some-url-pointing-to-your-dataset.com",
+    "sources": {
+		"dockerfile_repo": "https://github.com/ai4os-hub/smartbay-dover-vqa",
+		"docker_registry_repo": "ai4oshub/smartbay-dover-vqa",
+		"code": "https://github.com/ai4os-hub/smartbay-dover-vqa",
+		"ai4_template": "ai4-template/2.1.5"
+    },
+    "continuous_integration": {
+        "build_status_badge": "https://jenkins.services.ai4os.eu/buildStatus/icon?job=AI4OS-hub/smartbay-dover-vqa/main",
+        "build_status_url": "https://jenkins.services.ai4os.eu/job/AI4OS-hub/job/smartbay-dover-vqa/job/main/"
+    },
+    "tosca": [
+        {
+            "title": "Mesos (CPU)",
+            "url": "https://raw.githubusercontent.com/indigo-dc/tosca-templates/master/deep-oc/deep-oc-marathon-webdav.yml",
+            "inputs": [
+                "rclone_conf",
+                "rclone_url",
+                "rclone_vendor",
+                "rclone_user",
+                "rclone_pass"
+            ]
+        }
+    ]
+}
