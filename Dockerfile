@@ -30,6 +30,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         git \
         curl \
         nano \
+        wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Update python packages
@@ -67,6 +68,16 @@ RUN git clone https://github.com/ai4os/deep-start /srv/.deep-start && \
 
 # Necessary for the Jupyter Lab terminal
 ENV SHELL /bin/bash
+
+# Install DOVER
+RUN git clone --depth 1 -b master https://github.com/DsmythMI/DOVER.git && \
+    cd DOVER && \
+    pip3 install --no-cache-dir -e . && \
+    mkdir pretrained_weights && \
+    cd pretrained_weights && \
+    wget https://github.com/QualityAssessment/DOVER/releases/download/v0.1.0/DOVER.pth && \
+    wget https://github.com/QualityAssessment/DOVER/releases/download/v0.5.0/DOVER-Mobile.pth &&\
+    cd ../..
 
 # Install user app
 RUN git clone -b $branch https://github.com/ai4os-hub/smartbay-dover-vqa && \
